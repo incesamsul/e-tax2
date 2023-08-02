@@ -9,7 +9,7 @@ class Helpers
     {
         self::$db = new Database;
 
-        $realisasi = "SELECT realisasi FROM kredit where cabang = '$cabang' AND bulan = '$month' ";
+        $realisasi = "SELECT realisasi FROM kredit_realisasi where cabang = '$cabang' AND bulan = '$month' ";
         self::$db->query($realisasi);
         return self::$db->single();
     }
@@ -18,7 +18,7 @@ class Helpers
     {
         self::$db = new Database;
 
-        $realisasi = "SELECT sum(realisasi) as total FROM kredit WHERE bulan = '$month' ";
+        $realisasi = "SELECT sum(realisasi) as total FROM kredit_realisasi WHERE bulan = '$month' ";
         self::$db->query($realisasi);
         return self::$db->single();
     }

@@ -36,16 +36,26 @@ $(document).ready(function () {
         $(this).closest("tr").remove();
     });
 
+    $(document).on('click', '.btn-filter', function () {
+        let gbId = $('#group_filter').val();
+        let baseurl = $(this).data('baseurl')
+        document.location.href = baseurl + '/kreditrealisasi/' + gbId;
+    })
+
     $(document).on('click', '.btn-save', function () {
         // Collect the data from the dynamic table
         const realisasiData = [];
         $('tbody tr').each(function () {
             const cabang = $(this).find('.cabang').text().trim();
-            const realisasiRow = { cabang, bulan: [] };
+            const tahun = $('#tahun').val();
+            const jenis_lembar_kerja = $('#jenis_lembar_kerja').val();
+            const bulan_input = $('#bulan_input').val();
+            const realisasiRow = { cabang, tahun, jenis_lembar_kerja, bulan_input, bulan: [] };
 
             $(this).find('.realisasi').each(function () {
                 const month = $(this).data('month');
                 const value = $(this).text().trim();
+
                 realisasiRow.bulan.push({ [month]: value });
             });
 
@@ -56,13 +66,14 @@ $(document).ready(function () {
 
         // Send the data to the server using jQuery AJAX
         $.ajax({
-            url: 'kredit/store',
+            url: 'kreditrealisasi/store',
             method: 'POST',
             data: {
                 formData: realisasiData,
             },
             success: function (response) {
                 // Handle the response from the server if needed
+                console.log(response)
                 toastr.info(
                     'Data berhasil tersimpan !'
                 );
