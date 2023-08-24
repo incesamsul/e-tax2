@@ -14,6 +14,15 @@ class Helpers
         return self::$db->single();
     }
 
+    public static function getProduktifitasByCabangAndMonth($cabang, $month)
+    {
+        self::$db = new Database;
+
+        $jmlRm = "SELECT jml_rm,pencarian FROM kredit_produktifitas where cabang = '$cabang' AND bulan = '$month' ";
+        self::$db->query($jmlRm);
+        return self::$db->single();
+    }
+
     public static function getTotalRealisasi($month)
     {
         self::$db = new Database;
@@ -27,6 +36,24 @@ class Helpers
     {
         $_SESSION['alert'] = [
             'pesan' => $pesan,
+        ];
+    }
+
+    public static function getRealisasiMonth()
+    {
+        return ['jun-22', 'jul-22', 'dec-22', 'mar-22', 'mar-23', 'apr-23', 'mei-23', 'jun-23'];
+    }
+
+    public static function getProduktifitasMonth()
+    {
+        return ['Jun-22', 'Dec-22', 'Mar-23', 'Apr-23', 'May-23', 'Jun-23'];
+    }
+
+    public static function getMonth()
+    {
+        return [
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember"
         ];
     }
 

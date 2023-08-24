@@ -3,7 +3,8 @@
     <section class="section">
         <div class="section-header shadow-none">
             <h1>Halaman kredit <?= isset($data['filtered']) ? $data['filtered'] : '' ?></h1>
-            <span><a class="badge badge-secondary ml-2" href="<?= BASEURL ?>/kreditproduktifitas">produktifitas</a></span>
+            <span><a class="badge badge-secondary ml-2" href="<?= BASEURL ?>/kreditrealisasi">Realisasi</a></span>
+
         </div>
 
         <div class="section-body">
@@ -13,7 +14,7 @@
                         <div class="card-header d-flex  align-items-start justify-content-between flex-row">
                             <div>
                                 <div class="d-flex flex-row">
-                                    <h4>Mikro (Realisasi dan pryeksi)</h4>
+                                    <h4>Produktifitas RM Mikro</h4>
                                     <!-- <a href="<?= BASEURL ?>/kredit/create" class="btn bg-main text-white"><i class="fas fa-plus"></i></a> -->
                                 </div>
 
@@ -60,18 +61,22 @@
                             <table class="full-width  table-bordered table-editable" cellpadding="10">
                                 <thead class="bg-danger text-white">
                                     <?php
-                                    $month = Helpers::getRealisasiMonth();
+                                    $month = Helpers::getProduktifitasMonth();
                                     ?>
-                                    <tr>
-                                        <th rowspan=" 2">Cabang</th>
-                                        <th class="text-center" colspan="<?= count($month) + 1 ?>">Realisasi</th>
 
+                                    <tr class="text-center">
+                                        <th rowspan=" 2">Cabang</th>
+
+                                        <?php foreach ($month as $row) : ?>
+                                            <th colspan="2"><?= $row ?></th>
+                                        <?php endforeach ?>
+                                        <th rowspan="2" style="width: 10px;">#</th>
                                     </tr>
                                     <tr>
                                         <?php foreach ($month as $row) : ?>
-                                            <th><?= $row ?></th>
+                                            <th>JML. RM</th>
+                                            <th>Pencarian</th>
                                         <?php endforeach ?>
-                                        <th style="width: 10px;">#</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -81,8 +86,11 @@
                                                 <?= $cabang['cabang'] ?>
                                             </td>
                                             <?php foreach ($month as $row) : ?>
-                                                <td contenteditable="true" class="realisasi" data-month="<?= $row ?>">
-                                                    <?= Helpers::getRealisasiKreditByCabangAndMonth($cabang['cabang'], $row) ? Helpers::getRealisasiKreditByCabangAndMonth($cabang['cabang'], $row)['realisasi'] : 0 ?>
+                                                <td contenteditable="true" class="jml_rm" data-month="<?= $row ?>">
+                                                    <?= Helpers::getProduktifitasByCabangAndMonth($cabang['cabang'], $row) ? Helpers::getProduktifitasByCabangAndMonth($cabang['cabang'], $row)['jml_rm'] : 0 ?>
+                                                </td>
+                                                <td contenteditable="true" class="pencarian" data-month="<?= $row ?>">
+                                                    <?= Helpers::getProduktifitasByCabangAndMonth($cabang['cabang'], $row) ? Helpers::getProduktifitasByCabangAndMonth($cabang['cabang'], $row)['pencarian'] : 0 ?>
                                                 </td>
                                             <?php endforeach ?>
                                             <td><button class='btn btn-sm btn-danger btnRemoveRow'><i class='fas fa-trash'></i></button></td>
