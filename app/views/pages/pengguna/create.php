@@ -59,7 +59,8 @@
                                             <option>admin</option>
                                             <option>akuntansi</option>
                                             <option>cabang</option>
-                                            <option>group</option>
+                                            <option value="group_hbl">group hbl</option>
+                                            <option value="group_sya">group syariah</option>
                                         </select>
                                     </div>
                                     <div class="form-grup">
