@@ -2,7 +2,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header shadow-none">
-            <h1>Lembar kerja BUMD</h1>
+            <h1>Lembar kerja syariah</h1>
         </div>
 
         <div class="section-body">
@@ -17,13 +17,9 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <?php if ($_SESSION['login']['role'] == 'group_hbl') : ?>
-                                <a href="<?= BASEURL ?>/dpk/bumd" class="btn btn-outline-secondary">BUMD</a>
-                                <a href="<?= BASEURL ?>/dpk/non_bumd" class="btn btn-outline-secondary">NON BUMD</a>
-                            <?php endif; ?>
-                            <?php if ($_SESSION['login']['role'] == 'group_sya') : ?>
-                                <a href="<?= BASEURL ?>/dpk/syariah" class="btn btn-outline-secondary">SYARIAH</a>
-                            <?php endif; ?>
+                            <a href="<?= BASEURL ?>/pajak/detail_dpk/<?= $data['id'] ?>" class="btn btn-outline-secondary">BUMD</a>
+                            <a href="<?= BASEURL ?>/pajak/detail_dpk_syariah/<?= $data['id'] ?>" class="btn btn-outline-secondary">NON BUMD</a>
+                            <a href="<?= BASEURL ?>/pajak/detail_dpk_syariah/<?= $data['id'] ?>" class="btn btn-outline-secondary">SYARIAH</a>
                         </div>
                     </div>
                 </div>
@@ -40,14 +36,14 @@
 
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
-
+                                <input type="text" class="search-data-table form-control">
                             </div>
                         </div>
                         <div class="card-body table-responsive">
 
 
 
-                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-bumd-giro-cash-in">
+                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-syariah-giro-cash-in">
                                 <thead class="bg-danger text-white">
                                     <tr class="text-center">
                                         <th>Nama</th>
@@ -65,28 +61,28 @@
                                     <?php
                                     $totalGiroCashIn = 0;
                                     ?>
-                                    <?php foreach ($data['bumd_giro_cash_in'] as $dpk) : ?>
+                                    <?php foreach ($data['syariah_giro_cash_in'] as $dpk) : ?>
                                         <?php
                                         $giroNet['cash_in'][] = $dpk['nominal'];
                                         $totalGiroCashIn += $dpk['nominal'];
                                         ?>
                                         <tr>
-                                            <td contenteditable="true" class="cell-data" data-col="nama">
+                                            <td contenteditable="false" class="cell-data" data-col="nama">
                                                 <?= $dpk['nama'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="nominal">
+                                            <td contenteditable="false" class="cell-data" data-col="nominal">
                                                 <?= $dpk['nominal'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="rate">
+                                            <td contenteditable="false" class="cell-data" data-col="rate">
                                                 <?= $dpk['rate'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="jangka_waktu">
+                                            <td contenteditable="false" class="cell-data" data-col="jangka_waktu">
                                                 <?= $dpk['jangka_waktu'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="keterangan">
+                                            <td contenteditable="false" class="cell-data" data-col="keterangan">
                                                 <?= $dpk['keterangan'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="tgl_proyeksi">
+                                            <td contenteditable="false" class="cell-data" data-col="tgl_proyeksi">
                                                 <?= $dpk['tgl_proyeksi'] ?>
                                             </td>
 
@@ -101,16 +97,7 @@
                                     </tr>
                                 </tfoot>
                             </table>
-                            <div class="d-flex mt-4 justify-content-end">
-                                <button class="btn bg-main btn-tambah-bumd-giro-cash-in text-white">
-                                    <i class="fas fa-plus"></i>
-                                    <span>Tambah</span>
-                                </button>
-                                <button class="btn btn-primary btn-save-bumd-giro-cash-in ml-2">
-                                    <i class="fas fa-save"></i>
-                                    <span>save</span>
-                                </button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -125,14 +112,14 @@
 
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
-
+                                <input type="text" class="search-data-table form-control">
                             </div>
                         </div>
                         <div class="card-body table-responsive">
 
 
 
-                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-bumd-giro-cash-out">
+                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-syariah-giro-cash-out">
                                 <thead class="bg-danger text-white">
                                     <tr class="text-center">
                                         <th>Nama</th>
@@ -147,28 +134,28 @@
                                 <tbody>
 
                                     <?php $totalGiroCashOut = 0 ?>
-                                    <?php foreach ($data['bumd_giro_cash_out'] as $dpk) : ?>
+                                    <?php foreach ($data['syariah_giro_cash_out'] as $dpk) : ?>
                                         <?php
                                         $giroNet['cash_out'][] = $dpk['nominal'];
                                         $totalGiroCashOut += $dpk['nominal'];
                                         ?>
                                         <tr>
-                                            <td contenteditable="true" class="cell-data" data-col="nama">
+                                            <td contenteditable="false" class="cell-data" data-col="nama">
                                                 <?= $dpk['nama'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="nominal">
+                                            <td contenteditable="false" class="cell-data" data-col="nominal">
                                                 <?= $dpk['nominal'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="rate">
+                                            <td contenteditable="false" class="cell-data" data-col="rate">
                                                 <?= $dpk['rate'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="jangka_waktu">
+                                            <td contenteditable="false" class="cell-data" data-col="jangka_waktu">
                                                 <?= $dpk['jangka_waktu'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="keterangan">
+                                            <td contenteditable="false" class="cell-data" data-col="keterangan">
                                                 <?= $dpk['keterangan'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="tgl_proyeksi">
+                                            <td contenteditable="false" class="cell-data" data-col="tgl_proyeksi">
                                                 <?= $dpk['tgl_proyeksi'] ?>
                                             </td>
 
@@ -183,16 +170,7 @@
                                     </tr>
                                 </tfoot>
                             </table>
-                            <div class="d-flex mt-4 justify-content-end">
-                                <button class="btn bg-main btn-tambah-bumd-giro-cash-out text-white">
-                                    <i class="fas fa-plus"></i>
-                                    <span>Tambah</span>
-                                </button>
-                                <button class="btn btn-primary btn-save-bumd-giro-cash-out ml-2">
-                                    <i class="fas fa-save"></i>
-                                    <span>save</span>
-                                </button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -211,6 +189,7 @@
                 }
 
                 ?>
+
                 <div class="col-lg-2">
                     <div class="card shadow-none">
                         <div class="card-header d-flex  align-items-start justify-content-between flex-row">
@@ -222,7 +201,7 @@
 
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
-
+                                <input type="text" class="search-data-table form-control">
                             </div>
                         </div>
                         <div class="card-body table-responsive">
@@ -257,6 +236,7 @@
             </div>
 
 
+
             <div class="row">
                 <div class="col-lg-5">
                     <div class="card shadow-none">
@@ -269,14 +249,14 @@
 
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
-
+                                <input type="text" class="search-data-table form-control">
                             </div>
                         </div>
                         <div class="card-body table-responsive">
 
 
 
-                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-bumd-deposito-cash-in">
+                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-syariah-deposito-cash-in">
                                 <thead class="bg-danger text-white">
                                     <tr class="text-center">
                                         <th>Nama</th>
@@ -291,28 +271,28 @@
                                 <tbody>
 
                                     <?php $totalDepositoCashIn = 0; ?>
-                                    <?php foreach ($data['bumd_deposito_cash_in'] as $dpk) : ?>
+                                    <?php foreach ($data['syariah_deposito_cash_in'] as $dpk) : ?>
                                         <?php
                                         $depoNet['cash_in'][] = $dpk['nominal'];
                                         $totalDepositoCashIn += $dpk['nominal'];
                                         ?>
                                         <tr>
-                                            <td contenteditable="true" class="cell-data" data-col="nama">
+                                            <td contenteditable="false" class="cell-data" data-col="nama">
                                                 <?= $dpk['nama'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="nominal">
+                                            <td contenteditable="false" class="cell-data" data-col="nominal">
                                                 <?= $dpk['nominal'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="rate">
+                                            <td contenteditable="false" class="cell-data" data-col="rate">
                                                 <?= $dpk['rate'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="jangka_waktu">
+                                            <td contenteditable="false" class="cell-data" data-col="jangka_waktu">
                                                 <?= $dpk['jangka_waktu'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="keterangan">
+                                            <td contenteditable="false" class="cell-data" data-col="keterangan">
                                                 <?= $dpk['keterangan'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="tgl_proyeksi">
+                                            <td contenteditable="false" class="cell-data" data-col="tgl_proyeksi">
                                                 <?= $dpk['tgl_proyeksi'] ?>
                                             </td>
 
@@ -327,20 +307,10 @@
                                     </tr>
                                 </tfoot>
                             </table>
-                            <div class="d-flex mt-4 justify-content-end">
-                                <button class="btn bg-main btn-tambah-bumd-deposito-cash-in text-white">
-                                    <i class="fas fa-plus"></i>
-                                    <span>Tambah</span>
-                                </button>
-                                <button class="btn btn-primary btn-save-bumd-deposito-cash-in ml-2">
-                                    <i class="fas fa-save"></i>
-                                    <span>save</span>
-                                </button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-5">
                     <div class="card shadow-none">
                         <div class="card-header d-flex  align-items-start justify-content-between flex-row">
@@ -352,14 +322,14 @@
 
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
-
+                                <input type="text" class="search-data-table form-control">
                             </div>
                         </div>
                         <div class="card-body table-responsive">
 
 
 
-                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-bumd-deposito-cash-out">
+                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-syariah-deposito-cash-out">
                                 <thead class="bg-danger text-white">
                                     <tr class="text-center">
                                         <th>Nama</th>
@@ -374,28 +344,28 @@
                                 <tbody>
 
                                     <?php $totalDepositoCashOut = 0 ?>
-                                    <?php foreach ($data['bumd_deposito_cash_out'] as $dpk) : ?>
+                                    <?php foreach ($data['syariah_deposito_cash_out'] as $dpk) : ?>
                                         <?php
                                         $depoNet['cash_out'][] = $dpk['nominal'];
                                         $totalDepositoCashOut += $dpk['nominal'];
                                         ?>
                                         <tr>
-                                            <td contenteditable="true" class="cell-data" data-col="nama">
+                                            <td contenteditable="false" class="cell-data" data-col="nama">
                                                 <?= $dpk['nama'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="nominal">
+                                            <td contenteditable="false" class="cell-data" data-col="nominal">
                                                 <?= $dpk['nominal'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="rate">
+                                            <td contenteditable="false" class="cell-data" data-col="rate">
                                                 <?= $dpk['rate'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="jangka_waktu">
+                                            <td contenteditable="false" class="cell-data" data-col="jangka_waktu">
                                                 <?= $dpk['jangka_waktu'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="keterangan">
+                                            <td contenteditable="false" class="cell-data" data-col="keterangan">
                                                 <?= $dpk['keterangan'] ?>
                                             </td>
-                                            <td contenteditable="true" class="cell-data" data-col="tgl_proyeksi">
+                                            <td contenteditable="false" class="cell-data" data-col="tgl_proyeksi">
                                                 <?= $dpk['tgl_proyeksi'] ?>
                                             </td>
 
@@ -410,16 +380,7 @@
                                     </tr>
                                 </tfoot>
                             </table>
-                            <div class="d-flex mt-4 justify-content-end">
-                                <button class="btn bg-main btn-tambah-bumd-deposito-cash-out text-white">
-                                    <i class="fas fa-plus"></i>
-                                    <span>Tambah</span>
-                                </button>
-                                <button class="btn btn-primary btn-save-bumd-deposito-cash-out ml-2">
-                                    <i class="fas fa-save"></i>
-                                    <span>save</span>
-                                </button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -450,7 +411,7 @@
 
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
-
+                                <input type="text" class="search-data-table form-control">
                             </div>
                         </div>
                         <div class="card-body table-responsive">
@@ -483,8 +444,6 @@
                     </div>
                 </div>
             </div>
-
-
 
 
         </div>

@@ -80,6 +80,13 @@ class PenggunaModel
         return $this->db->resultSet();
     }
 
+    public function getUserHblAndSya()
+    {
+        $users = "SELECT * FROM users WHERE role = 'group_sya' or role ='group_hbl'";
+        $this->db->query($users);
+        return $this->db->resultSet();
+    }
+
     public function getUserCabangAndGroup()
     {
         $users = "SELECT * FROM users WHERE role = 'cabang' or role ='group'";

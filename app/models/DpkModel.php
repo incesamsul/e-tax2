@@ -46,4 +46,11 @@ class DpkModel
         $this->db->query($cabang);
         return $this->db->resultSet();
     }
+    public function getDataDpkPerGrup($tipe, $id)
+    {
+        $id_group = $id;
+        $cabang = "SELECT * FROM dpk  WHERE id_group = '$id_group' and tipe = '$tipe'";
+        $this->db->query($cabang);
+        return $this->db->resultSet();
+    }
 }

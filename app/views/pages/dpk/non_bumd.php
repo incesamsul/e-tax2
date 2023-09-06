@@ -2,7 +2,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header shadow-none">
-            <h1>Lembar kerja BUMD</h1>
+            <h1>Lembar kerja NON BUMD</h1>
         </div>
 
         <div class="section-body">
@@ -47,7 +47,7 @@
 
 
 
-                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-bumd-giro-cash-in">
+                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-nonbumd-giro-cash-in">
                                 <thead class="bg-danger text-white">
                                     <tr class="text-center">
                                         <th>Nama</th>
@@ -65,7 +65,7 @@
                                     <?php
                                     $totalGiroCashIn = 0;
                                     ?>
-                                    <?php foreach ($data['bumd_giro_cash_in'] as $dpk) : ?>
+                                    <?php foreach ($data['nonbumd_giro_cash_in'] as $dpk) : ?>
                                         <?php
                                         $giroNet['cash_in'][] = $dpk['nominal'];
                                         $totalGiroCashIn += $dpk['nominal'];
@@ -102,11 +102,11 @@
                                 </tfoot>
                             </table>
                             <div class="d-flex mt-4 justify-content-end">
-                                <button class="btn bg-main btn-tambah-bumd-giro-cash-in text-white">
+                                <button class="btn bg-main btn-tambah-nonbumd-giro-cash-in text-white">
                                     <i class="fas fa-plus"></i>
                                     <span>Tambah</span>
                                 </button>
-                                <button class="btn btn-primary btn-save-bumd-giro-cash-in ml-2">
+                                <button class="btn btn-primary btn-save-nonbumd-giro-cash-in ml-2">
                                     <i class="fas fa-save"></i>
                                     <span>save</span>
                                 </button>
@@ -132,7 +132,7 @@
 
 
 
-                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-bumd-giro-cash-out">
+                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-nonbumd-giro-cash-out">
                                 <thead class="bg-danger text-white">
                                     <tr class="text-center">
                                         <th>Nama</th>
@@ -147,7 +147,7 @@
                                 <tbody>
 
                                     <?php $totalGiroCashOut = 0 ?>
-                                    <?php foreach ($data['bumd_giro_cash_out'] as $dpk) : ?>
+                                    <?php foreach ($data['nonbumd_giro_cash_out'] as $dpk) : ?>
                                         <?php
                                         $giroNet['cash_out'][] = $dpk['nominal'];
                                         $totalGiroCashOut += $dpk['nominal'];
@@ -184,11 +184,11 @@
                                 </tfoot>
                             </table>
                             <div class="d-flex mt-4 justify-content-end">
-                                <button class="btn bg-main btn-tambah-bumd-giro-cash-out text-white">
+                                <button class="btn bg-main btn-tambah-nonbumd-giro-cash-out text-white">
                                     <i class="fas fa-plus"></i>
                                     <span>Tambah</span>
                                 </button>
-                                <button class="btn btn-primary btn-save-bumd-giro-cash-out ml-2">
+                                <button class="btn btn-primary btn-save-nonbumd-giro-cash-out ml-2">
                                     <i class="fas fa-save"></i>
                                     <span>save</span>
                                 </button>
@@ -211,6 +211,7 @@
                 }
 
                 ?>
+
                 <div class="col-lg-2">
                     <div class="card shadow-none">
                         <div class="card-header d-flex  align-items-start justify-content-between flex-row">
@@ -257,6 +258,8 @@
             </div>
 
 
+
+
             <div class="row">
                 <div class="col-lg-5">
                     <div class="card shadow-none">
@@ -276,7 +279,7 @@
 
 
 
-                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-bumd-deposito-cash-in">
+                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-nonbumd-deposito-cash-in">
                                 <thead class="bg-danger text-white">
                                     <tr class="text-center">
                                         <th>Nama</th>
@@ -291,7 +294,7 @@
                                 <tbody>
 
                                     <?php $totalDepositoCashIn = 0; ?>
-                                    <?php foreach ($data['bumd_deposito_cash_in'] as $dpk) : ?>
+                                    <?php foreach ($data['nonbumd_deposito_cash_in'] as $dpk) : ?>
                                         <?php
                                         $depoNet['cash_in'][] = $dpk['nominal'];
                                         $totalDepositoCashIn += $dpk['nominal'];
@@ -328,11 +331,11 @@
                                 </tfoot>
                             </table>
                             <div class="d-flex mt-4 justify-content-end">
-                                <button class="btn bg-main btn-tambah-bumd-deposito-cash-in text-white">
+                                <button class="btn bg-main btn-tambah-nonbumd-deposito-cash-in text-white">
                                     <i class="fas fa-plus"></i>
                                     <span>Tambah</span>
                                 </button>
-                                <button class="btn btn-primary btn-save-bumd-deposito-cash-in ml-2">
+                                <button class="btn btn-primary btn-save-nonbumd-deposito-cash-in ml-2">
                                     <i class="fas fa-save"></i>
                                     <span>save</span>
                                 </button>
@@ -340,7 +343,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-5">
                     <div class="card shadow-none">
                         <div class="card-header d-flex  align-items-start justify-content-between flex-row">
@@ -359,7 +361,7 @@
 
 
 
-                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-bumd-deposito-cash-out">
+                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-nonbumd-deposito-cash-out">
                                 <thead class="bg-danger text-white">
                                     <tr class="text-center">
                                         <th>Nama</th>
@@ -374,7 +376,7 @@
                                 <tbody>
 
                                     <?php $totalDepositoCashOut = 0 ?>
-                                    <?php foreach ($data['bumd_deposito_cash_out'] as $dpk) : ?>
+                                    <?php foreach ($data['nonbumd_deposito_cash_out'] as $dpk) : ?>
                                         <?php
                                         $depoNet['cash_out'][] = $dpk['nominal'];
                                         $totalDepositoCashOut += $dpk['nominal'];
@@ -411,11 +413,11 @@
                                 </tfoot>
                             </table>
                             <div class="d-flex mt-4 justify-content-end">
-                                <button class="btn bg-main btn-tambah-bumd-deposito-cash-out text-white">
+                                <button class="btn bg-main btn-tambah-nonbumd-deposito-cash-out text-white">
                                     <i class="fas fa-plus"></i>
                                     <span>Tambah</span>
                                 </button>
-                                <button class="btn btn-primary btn-save-bumd-deposito-cash-out ml-2">
+                                <button class="btn btn-primary btn-save-nonbumd-deposito-cash-out ml-2">
                                     <i class="fas fa-save"></i>
                                     <span>save</span>
                                 </button>
@@ -483,6 +485,7 @@
                     </div>
                 </div>
             </div>
+
 
 
 

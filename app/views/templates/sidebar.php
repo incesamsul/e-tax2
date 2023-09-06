@@ -20,12 +20,12 @@
 
             <?php if ($_SESSION['login']['role'] == 'akuntansi') : ?>
                 <li id="liKredit"><a class="nav-link" href="<?= BASEURL ?>/kreditrealisasi"><i class="far  fa-bell"></i> <span>Kredit</span></a></li>
-                <li id="liDpk"><a class="nav-link" href="<?= BASEURL ?>/dpk"><i class="far  fa-file-alt"></i> <span>Dpk</span></a></li>
+                <li id="liDpk"><a class="nav-link" href="<?= BASEURL ?>/pajak/dpk"><i class="far  fa-file-alt"></i> <span>Dpk</span></a></li>
                 <li id="liRekeningSS"><a class="nav-link" href="<?= BASEURL ?>/rekening_ss"><i class="far  fa-file-excel"></i> <span>Rekening SS</span></a></li>
                 <li id="liRekeningSS"><a class="nav-link" href="<?= BASEURL ?>/edit_lembar_kerja"><i class="far  fa-file-alt"></i> <span>Edit Lembar kerja</span></a></li>
             <?php endif; ?>
 
-            <?php if ($_SESSION['login']['role'] == 'group') : ?>
+            <?php if ($_SESSION['login']['role'] == 'group_hbl' || $_SESSION['login']['role'] == 'group_sya') : ?>
                 <li id="liKredit"><a class="nav-link" href="<?= BASEURL ?>/kreditrealisasi"><i class="far  fa-bell"></i> <span>Kredit</span></a></li>
                 <li id="liDpk"><a class="nav-link" href="<?= BASEURL ?>/dpk"><i class="far  fa-file-alt"></i> <span>Dpk</span></a></li>
                 <li id="liRekeningSS"><a class="nav-link" href="<?= BASEURL ?>/rekening_ss"><i class="far  fa-file-excel"></i> <span>Rekening SS</span></a></li>
