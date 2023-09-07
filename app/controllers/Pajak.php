@@ -88,6 +88,8 @@ class Pajak extends Controller
         $data['syariah_giro_cash_out'] = $this->model('DpkModel')->getDataDpkPerGrup('syariah-giro-cash-out', $id);
         $data['syariah_deposito_cash_in'] = $this->model('DpkModel')->getDataDpkPerGrup('syariah-deposito-cash-in', $id);
         $data['syariah_deposito_cash_out'] = $this->model('DpkModel')->getDataDpkPerGrup('syariah-deposito-cash-out', $id);
+        $data['syariah_tabungan_cash_in'] = $this->model('DpkModel')->getDataDpkPerGrup('syariah-tabungan-cash-in', $id);
+        $data['syariah_tabungan_cash_out'] = $this->model('DpkModel')->getDataDpkPerGrup('syariah-tabungan-cash-out', $id);
         $data['id'] = $id;
         $this->view('templates/header', $data);
         $this->view('templates/navbar');
