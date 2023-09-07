@@ -16,14 +16,19 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
-                        <div class="card-body">
-                            <?php if ($_SESSION['login']['role'] == 'group_hbl') : ?>
-                                <a href="<?= BASEURL ?>/dpk/bumd" class="btn btn-outline-secondary">BUMD</a>
-                                <a href="<?= BASEURL ?>/dpk/non_bumd" class="btn btn-outline-secondary">NON BUMD</a>
-                            <?php endif; ?>
-                            <?php if ($_SESSION['login']['role'] == 'group_sya') : ?>
-                                <a href="<?= BASEURL ?>/dpk/syariah" class="btn btn-outline-secondary">SYARIAH</a>
-                            <?php endif; ?>
+                        <div class="card-body d-flex justify-content-between">
+                            <div>
+                                <?php if ($_SESSION['login']['role'] == 'group_hbl') : ?>
+                                    <a href="<?= BASEURL ?>/dpk/bumd" class="btn btn-outline-secondary">BUMD</a>
+                                    <a href="<?= BASEURL ?>/dpk/non_bumd" class="btn btn-outline-secondary">NON BUMD</a>
+                                <?php endif; ?>
+                                <?php if ($_SESSION['login']['role'] == 'group_sya') : ?>
+                                    <a href="<?= BASEURL ?>/dpk/syariah" class="btn btn-outline-secondary">SYARIAH</a>
+                                <?php endif; ?>
+                            </div>
+                            <button class="btn btn-primary btn-save-all">
+                                <i class="fas fa-save"></i> Simpan
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -106,7 +111,7 @@
                                     <i class="fas fa-plus"></i>
                                     <span>Tambah</span>
                                 </button>
-                                <button class="btn btn-primary btn-save-bumd-giro-cash-in ml-2">
+                                <button hidden class="btn btn-primary btn-save-bumd-giro-cash-in ml-2">
                                     <i class="fas fa-save"></i>
                                     <span>save</span>
                                 </button>
@@ -188,7 +193,7 @@
                                     <i class="fas fa-plus"></i>
                                     <span>Tambah</span>
                                 </button>
-                                <button class="btn btn-primary btn-save-bumd-giro-cash-out ml-2">
+                                <button hidden class="btn btn-primary btn-save-bumd-giro-cash-out ml-2">
                                     <i class="fas fa-save"></i>
                                     <span>save</span>
                                 </button>
@@ -332,7 +337,7 @@
                                     <i class="fas fa-plus"></i>
                                     <span>Tambah</span>
                                 </button>
-                                <button class="btn btn-primary btn-save-bumd-deposito-cash-in ml-2">
+                                <button hidden class="btn btn-primary btn-save-bumd-deposito-cash-in ml-2">
                                     <i class="fas fa-save"></i>
                                     <span>save</span>
                                 </button>
@@ -415,7 +420,7 @@
                                     <i class="fas fa-plus"></i>
                                     <span>Tambah</span>
                                 </button>
-                                <button class="btn btn-primary btn-save-bumd-deposito-cash-out ml-2">
+                                <button hidden class="btn btn-primary btn-save-bumd-deposito-cash-out ml-2">
                                     <i class="fas fa-save"></i>
                                     <span>save</span>
                                 </button>

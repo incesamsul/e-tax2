@@ -45,6 +45,13 @@ $(document).ready(function () {
 
 
 
+    $(document).on('click', '.btn-save-all', function () {
+        $('.btn-save-nonbumd-giro-cash-in').click();
+        $('.btn-save-nonbumd-giro-cash-out').click();
+        $('.btn-save-nonbumd-deposito-cash-in').click();
+        $('.btn-save-nonbumd-deposito-cash-out').click();
+    })
+
     $(document).on('click', '.btn-save-nonbumd-giro-cash-in', function () {
         // Collect the data from the dynamic table
 

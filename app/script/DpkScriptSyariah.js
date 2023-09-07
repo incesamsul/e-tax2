@@ -51,7 +51,14 @@ $(document).ready(function () {
         addNewRow('table-syariah-tabungan-cash-out');
     });
 
-
+    $(document).on('click', '.btn-save-all', function () {
+        $('.btn-save-syariah-giro-cash-in').click();
+        $('.btn-save-syariah-giro-cash-out').click();
+        $('.btn-save-syariah-deposito-cash-in').click();
+        $('.btn-save-syariah-deposito-cash-out').click();
+        $('.btn-save-syariah-tabungan-cash-in').click();
+        $('.btn-save-syariah-tabungan-cash-out').click();
+    })
 
 
     $(document).on('click', '.btn-save-syariah-giro-cash-in', function () {

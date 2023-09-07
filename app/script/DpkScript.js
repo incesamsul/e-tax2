@@ -43,7 +43,12 @@ $(document).ready(function () {
         $(this).closest("tr").remove();
     });
 
-
+    $(document).on('click', '.btn-save-all', function () {
+        $('.btn-save-bumd-giro-cash-in').click();
+        $('.btn-save-bumd-giro-cash-out').click();
+        $('.btn-save-bumd-deposito-cash-in').click();
+        $('.btn-save-bumd-deposito-cash-out').click();
+    })
 
     $(document).on('click', '.btn-save-bumd-giro-cash-in', function () {
         // Collect the data from the dynamic table
