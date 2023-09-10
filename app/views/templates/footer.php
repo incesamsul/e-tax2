@@ -39,6 +39,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" integrity="sha512-HCG6Vbdg4S+6MkKlMJAm5EHJDeTZskUdUMTb8zNcUKoYNDteUQ0Zig30fvD9IXnRv7Y0X4/grKCnNoQ21nF2Qw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <?= isset($data['script']) ? $data['script'] : '' ?>
+
+<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
+
 </body>
 
 </html>

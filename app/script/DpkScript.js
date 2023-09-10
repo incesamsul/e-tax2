@@ -251,4 +251,55 @@ $(document).ready(function () {
 
 
 
+
+
+
+
+
+    document.getElementById('export-button').addEventListener('click', function () {
+        // Create a new workbook and worksheet
+        var workbook = XLSX.utils.book_new();
+        var worksheet = XLSX.utils.json_to_sheet([]);
+
+        // Select and export each table
+        var tableNames = ['table-bumd-giro-cash-in', 'table-bumd-giro-cash-out', 'table-giro-net', 'table-bumd-deposito-cash-in', 'table-bumd-deposito-cash-out', 'table-depo-net']; // Replace with the IDs of your tables
+
+        var columnIndex = 0; // Start at column A
+        var rowIndex = 0; // Start at row 1
+        var tablesPerRow = 3; // Number of tables to stack before moving to the next row
+
+        tableNames.forEach(function (tableName) {
+            var table = document.getElementById(tableName);
+            var tableData = XLSX.utils.table_to_sheet(table, { sheet: tableName });
+
+            // Get the data as an array of objects
+            var jsonData = XLSX.utils.sheet_to_json(tableData, { header: 1 });
+
+            // Calculate the row and column for the current table
+            var currentRow = rowIndex + Math.floor(columnIndex / tablesPerRow) * jsonData.length;
+            var currentColumn = (columnIndex % tablesPerRow) * (jsonData[0].length + 1);
+
+            // Add the data to the 'CombinedSheet' starting from the calculated row and column
+            XLSX.utils.sheet_add_json(worksheet, jsonData, { origin: { r: currentRow, c: currentColumn } });
+
+            // Increment the column index
+            columnIndex += 1;
+
+            // If we've added tablesPerRow tables in the current row, move to the next row
+            if (columnIndex % tablesPerRow === 0) {
+                rowIndex += jsonData.length;
+                columnIndex = 0;
+            }
+        });
+
+        // Add the combined data to the workbook
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'CombinedSheet');
+
+        // Generate and download the Excel file
+        XLSX.writeFile(workbook, 'exported_tables.xlsx');
+    });
+
+
+
+
 });
