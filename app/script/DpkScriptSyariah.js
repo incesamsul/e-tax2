@@ -7,7 +7,18 @@ $(document).ready(function () {
 
         // Add the cells for each col
         col.forEach((cells) => {
-            const cell = $(`<td contenteditable="true" class="cell-data" data-col="${cells}">`);
+            const cell = $(`<td contenteditable="true" class="cell-data" data-col="${cells}" id="${cells}"></td>`);
+
+            // Check if the cell is for the "rate" column
+            if (cells === "rate") {
+                cell.on("input", function () {
+                    const content = $(this).text().trim();
+                    if (!content.endsWith("%")) {
+                        $(this).text(content + "%");
+                    }
+                });
+            }
+
             newRow.append(cell);
         });
 

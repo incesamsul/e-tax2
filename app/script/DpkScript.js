@@ -1,4 +1,8 @@
 $(document).ready(function () {
+
+    // add percent 
+
+
     const col = ['nama', 'nominal', 'rate', 'jangka_waktu', 'keterangan', 'tgl_proyeksi'];
     const dataTable = $(".table-editable");
 
@@ -7,7 +11,18 @@ $(document).ready(function () {
 
         // Add the cells for each col
         col.forEach((cells) => {
-            const cell = $(`<td contenteditable="true" class="cell-data" data-col="${cells}">`);
+            const cell = $(`<td contenteditable="true" class="cell-data" data-col="${cells}" id="${cells}"></td>`);
+
+            // Check if the cell is for the "rate" column
+            if (cells === "rate") {
+                cell.on("input", function () {
+                    const content = $(this).text().trim();
+                    if (!content.endsWith("%")) {
+                        $(this).text(content + "%");
+                    }
+                });
+            }
+
             newRow.append(cell);
         });
 
@@ -19,6 +34,7 @@ $(document).ready(function () {
         // Append the new row to the specified table
         $("#" + tableId).find("tbody").append(newRow);
     }
+
 
     // Attach click event to the "Tambah" button
     $(".btn-tambah-bumd-giro-cash-in").on("click", function () {

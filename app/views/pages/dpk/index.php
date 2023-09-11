@@ -92,7 +92,7 @@
                                                             <td contenteditable="true" class="cell-data" data-col="nominal">
                                                                 <?= $dpk['nominal'] ?>
                                                             </td>
-                                                            <td contenteditable="true" class="cell-data" data-col="rate">
+                                                            <td id="rateCell" contenteditable="true" class="cell-data" data-col="rate">
                                                                 <?= $dpk['rate'] ?>
                                                             </td>
                                                             <td contenteditable="true" class="cell-data" data-col="jangka_waktu">
