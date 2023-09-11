@@ -19,6 +19,15 @@ $(document).ready(function () {
                 });
             }
 
+            if (cells === "jangka_waktu") {
+                cell.on("input", function () {
+                    const content = $(this).text().trim();
+                    if (!content.endsWith("Tahun")) {
+                        $(this).text(content + "Tahun");
+                    }
+                });
+            }
+
             newRow.append(cell);
         });
 
