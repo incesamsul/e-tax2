@@ -361,4 +361,37 @@ $(document).ready(function () {
         });
     });
 
+    document.getElementById('export-button').addEventListener('click', function () {
+        // Create a new workbook
+        var workbook = XLSX.utils.book_new();
+
+        // Define the table names and their corresponding names for the sheets
+        var tables = [
+            { id: 'table-syariah-giro-cash-in', name: 'Giro cash in' },
+            { id: 'table-syariah-giro-cash-out', name: 'Giro cash out' },
+            { id: 'table-syariah-deposito-cash-in', name: 'Deposito cash in' },
+            { id: 'table-syariah-deposito-cash-out', name: 'Deposito cash out' },
+            { id: 'table-syariah-tabungan-cash-in', name: 'Tabungan cash in' },
+            { id: 'table-syariah-tabungan-cash-out', name: 'Tabungan cash out' },
+            { id: 'table-giro-net', name: 'Giro net' },
+            { id: 'table-depo-net', name: 'Depo net' },
+            { id: 'table-tabungan-net', name: 'Tabungan net' }
+
+        ];
+
+        tables.forEach(function (tableInfo) {
+            var table = document.getElementById(tableInfo.id);
+
+            // Get the data from the table
+            var tableData = XLSX.utils.table_to_sheet(table, { sheet: tableInfo.name });
+
+            // Create a new worksheet for each table
+            XLSX.utils.book_append_sheet(workbook, tableData, tableInfo.name);
+        });
+
+        // Generate and download the Excel file
+        XLSX.writeFile(workbook, 'exported_tables.xlsx');
+    });
+
+
 });

@@ -80,6 +80,13 @@ class PenggunaModel
         return $this->db->resultSet();
     }
 
+    public function getUserRoleById($id)
+    {
+        $users = "SELECT * FROM users WHERE id = '$id'";
+        $this->db->query($users);
+        return $this->db->single();
+    }
+
     public function getUserHblAndSya()
     {
         $users = "SELECT * FROM users WHERE role = 'group_sya' or role ='group_hbl'";

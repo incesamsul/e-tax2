@@ -251,6 +251,34 @@ $(document).ready(function () {
         });
     });
 
+    document.getElementById('export-button').addEventListener('click', function () {
+        // Create a new workbook
+        var workbook = XLSX.utils.book_new();
+
+        // Define the table names and their corresponding names for the sheets
+        var tables = [
+            { id: 'table-nonbumd-giro-cash-in', name: 'Giro cash in' },
+            { id: 'table-nonbumd-giro-cash-out', name: 'Giro cash out' },
+            { id: 'table-nonbumd-deposito-cash-in', name: 'Deposito cash in' },
+            { id: 'table-nonbumd-deposito-cash-out', name: 'Deposito cash out' },
+            { id: 'table-giro-net', name: 'Giro net' },
+            { id: 'table-depo-net', name: 'Depo net' }
+
+        ];
+
+        tables.forEach(function (tableInfo) {
+            var table = document.getElementById(tableInfo.id);
+
+            // Get the data from the table
+            var tableData = XLSX.utils.table_to_sheet(table, { sheet: tableInfo.name });
+
+            // Create a new worksheet for each table
+            XLSX.utils.book_append_sheet(workbook, tableData, tableInfo.name);
+        });
+
+        // Generate and download the Excel file
+        XLSX.writeFile(workbook, 'exported_tables.xlsx');
+    });
 
 
 

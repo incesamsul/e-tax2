@@ -246,7 +246,7 @@
 
 
 
-                                            <table class="full-width  table-bordered table-editable" cellpadding="10">
+                                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-giro-net">
                                                 <thead class="bg-danger text-white">
                                                     <tr class="text-center">
                                                         <th>NET</th>
@@ -483,7 +483,7 @@
 
 
 
-                                            <table class="full-width  table-bordered table-editable" cellpadding="10">
+                                            <table class="full-width  table-bordered table-editable" cellpadding="10" id="table-depo-net">
                                                 <thead class="bg-danger text-white">
                                                     <tr class="text-center">
                                                         <th>NET</th>

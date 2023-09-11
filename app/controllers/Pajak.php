@@ -40,6 +40,11 @@ class Pajak extends Controller
 
     public function detail_dpk($id)
     {
+
+        $data['role'] = $this->model('PenggunaModel')->getUserRoleById($id)['role'];
+        if ($data['role'] == 'group_sya') {
+            header('location:' . BASEURL . '/pajak/detail_dpk_syariah/' . $id);
+        }
         $data['judul'] = 'DPK';
         $data['liClassActive'] = 'liDpk';
         $data['script'] = $this->script('DpkScript');
@@ -60,9 +65,10 @@ class Pajak extends Controller
 
     public function detail_dpk_nonbumd($id)
     {
+        $data['role'] = $this->model('PenggunaModel')->getUserRoleById($id)['role'];
         $data['judul'] = 'DPK';
         $data['liClassActive'] = 'liDpk';
-        $data['script'] = $this->script('DpkScript');
+        $data['script'] = $this->script('DpkScriptNonBumd');
         $data['nama'] = [];
         $data['nonbumd_giro_cash_in'] = $this->model('DpkModel')->getDataDpkPerGrup('nonbumd-giro-cash-in', $id);
         $data['nonbumd_giro_cash_out'] = $this->model('DpkModel')->getDataDpkPerGrup('nonbumd-giro-cash-out', $id);
@@ -80,9 +86,11 @@ class Pajak extends Controller
 
     public function detail_dpk_syariah($id)
     {
+        $data['role'] = $this->model('PenggunaModel')->getUserRoleById($id)['role'];
+
         $data['judul'] = 'DPK';
         $data['liClassActive'] = 'liDpk';
-        $data['script'] = $this->script('DpkScript');
+        $data['script'] = $this->script('DpkScriptSyariah');
         $data['nama'] = [];
         $data['syariah_giro_cash_in'] = $this->model('DpkModel')->getDataDpkPerGrup('syariah-giro-cash-in', $id);
         $data['syariah_giro_cash_out'] = $this->model('DpkModel')->getDataDpkPerGrup('syariah-giro-cash-out', $id);
